@@ -1,0 +1,104 @@
+#include<stdio.h>
+
+struct Type{
+    char tf[50],ncf[50];
+    int places;
+};
+struct Friends{
+    char name[50],petname[50];
+    long phoneno;
+    struct Type type;
+};
+int main()
+{
+    int n,i;
+    printf("enter the number of friends to add:");
+    scanf("%d",&n);
+
+    struct Friends friend[n];
+    for(i=0;i<n;i++){
+        printf("enter the Friends Name: ");
+        scanf("%s",&friend[i].name);
+
+        printf("enter the Pet Name: ");
+        scanf("%s",&friend[i].petname);
+
+        printf("enter the phoneno: ");
+        scanf("%ld",&friend[i].phoneno);
+
+        printf("enter type of friend(scl,clg, or area friend)");
+        scanf("%s",friend[i].type.tf);
+
+        printf("enter the common friend name");
+        scanf("%s",&friend[i].type.tf);
+
+        printf("enter the no of places visited together :");
+        scanf("%d",&friend[i].type.places);
+
+        printf("\nFriend Name: %s\n",friend[i].name);
+        printf("Pet Name: %s\n",friend[i].petname);
+        printf("Phone Number: %ld\n",friend[i].phoneno);
+        printf("Type of Friend: %s\n",friend[i].type.tf);
+        printf("Common Friend name: %s\n",friend[i].type.ncf);
+        printf("Number of places Visited Together: %d\n",friend[i].type.places);
+
+    }
+return 0;
+}
+
+//QUESTION 2
+
+#include<stdio.h>
+#define MAX_PRODUCTS 100
+
+struct product{
+    char pn[50];
+    int pid;
+    int price;
+};
+
+int main(){
+    struct product p[MAX_PRODUCTS];
+    int n,i;
+    struct product *most_expensive,*least_expensive;
+
+    printf("enter the no of products: ");
+    scanf("%D",&n);
+
+    if(n<=0 || n>MAX_PRODUCTS){
+        printf("INvalid number of products.Please enter a number between 1 %d.\n",MAX_PRODUCTS);
+        return 1;
+
+    }
+
+for(i=0;i<n;i++){
+    printf("enter the product name:");
+    scanf("%s",&p[i].pn);
+
+    printf("enter the product ID:");
+    scanf("%s",&p[i].pid);
+
+    printf("enter the product name:");
+    scanf("%s",&p[i].price);
+
+}
+
+most_expensive =&p[0];
+least_expensive =&p[0];
+
+for(i=1;i<n;i++){
+    if (p[i].price > most_expensive->price){
+        most_expensive =&p[i];
+
+    }
+if(p[i].price<least_expensive->price){
+    least_expensive =&p[i];
+
+}
+}
+
+printf("most expensive product:%s,ID:%d,Price:%d\n",most_expensive->pn,most_expensive->pid,most_expensive->price);
+printf("least expensive product:%s,ID:%d,Price:%d\n",least_expensive->pn,least_expensive->pid,least_expensive->price);
+
+return 0;
+}
